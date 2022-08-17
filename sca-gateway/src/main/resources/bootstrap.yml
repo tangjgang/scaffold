@@ -1,0 +1,24 @@
+nacos:
+  namespace: scaffold
+  sever-addr: 43.136.131.154:9000
+  group: sca
+  common-group: sca-common
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        group: ${nacos.group}
+        server-addr: ${nacos.sever-addr}
+        namespace: ${nacos.namespace}
+      config:
+        encode: UTF-8
+        file-extension: yml
+        server-addr: ${nacos.sever-addr}
+        namespace: ${nacos.namespace}
+        group: ${nacos.common-group}
+        extension-configs:
+          - data-id: application-gateway-rate.yml
+            group: ${nacos.group}
+          - data-id: sca-common-config.yml
+            group: ${nacos.common-group}
